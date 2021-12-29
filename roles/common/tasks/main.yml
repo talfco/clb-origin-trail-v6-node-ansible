@@ -1,0 +1,8 @@
+---
+- name: apt install
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { state: "latest", name: "aptitude" }
+    - { state: "latest", name: "htop" }

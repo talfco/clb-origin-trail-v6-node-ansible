@@ -1,0 +1,10 @@
+---
+# This is the Playbook
+
+- name: Installation of Origin Trail V6 Node
+  become: yes
+  hosts: ot_v6_mumbai
+  remote_user: root
+  roles:
+    - common
+
