@@ -1,0 +1,6 @@
+mysql_root_password: "theR00tP455w0rd"
+
+mysql_databases:
+  - name: operationaldb
+    encoding: utf8
+    #collation: latin1_general_ci

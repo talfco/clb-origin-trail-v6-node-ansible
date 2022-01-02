@@ -1,0 +1,71 @@
+---
+
+- name: Create man1 directory (default-jre fix)
+  ansible.builtin.file:
+    path: /usr/share/man/man1
+    state: directory
+- name: Install default-jre
+  apt:
+    name: "{{ item.name }}"
+    state: "{{ item.state }}"
+  with_items:
+    - { state: "latest", name: "default-jre" }
+    - { state: "latest", name: "supervisor" }
+- name: Copy the graph rpm db package over
+  copy:
+    src: graphdb-free-9.10.1-dist.zip
+    dest: ./ansible
+- name: Ensure group "graphdb" exists
+  ansible.builtin.group:
+    name: graphdb
+    state: present
+- name: Add the user 'graphdb'
+  user:
+    name: graphdb
+    group: graphdb
+    groups: graphdb, sudo, root
+    password: "{{ 'test' | password_hash('sha512') }}"
+    shell: /bin/bash
+    comment: GraphDB User
+- name: Unarchive a file that is already on the remote machine
+  ansible.builtin.unarchive:
+    src: ./ansible/graphdb-free-9.10.1-dist.zip
+    owner: graphdb
+    group: graphdb
+    dest: /home/graphdb
+    remote_src: yes
+- name: Create a log directory for graphdb in /var/log
+  ansible.builtin.file:
+    path: /var/log/graphdb
+    owner: graphdb
+    group: graphdb
+    state: directory
+    mode: '0755'
+- name: Create a symbolic link to graphdb-home
+  ansible.builtin.file:
+    src: /home/graphdb/graphdb-free-9.10.1/
+    dest: /home/graphdb/graphdb-home
+    owner: graphdb
+    group: graphdb
+    state: link
+- name: Copy over the adjusted graphdb.properties files
+  copy:
+    src: graphdb.properties
+    dest: /home/graphdb/graphdb-home/conf
+    owner: graphdb
+    group: graphdb
+- name: Copy graphdb.conf to supervisor directory
+  copy:
+    src: graphdb.conf
+    dest: /etc/supervisor/conf.d
+    mode: a+rx
+- name: Restart supervisor.service
+  command: systemctl restart supervisor.service
+#- name: Gather the package facts
+#  ansible.builtin.package_facts:
+#    manager: auto
+
+#- name: Install grahdb-free if not installed
+#  command: alien -i ./ansible/graphdb-free-9.10.1.deb
+#  when: packages['grahdb-free'] is not defined
+

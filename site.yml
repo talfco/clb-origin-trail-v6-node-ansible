@@ -1,10 +1,19 @@
 ---
-# This is the Playbook
+# Origin Trail Version 6 Node Setup Playbook
+# Works on Ubuntu System with Architecture x86_64
+# By: felix@cloudburo.net
+# References:
+# https://severalnines.com/database-blog/introduction-mysql-deployment-using-ansible-role
 
 - name: Installation of Origin Trail V6 Node
   become: yes
   hosts: ot_v6_mumbai
   remote_user: root
+  vars_files:
+    - vars/main.yml
   roles:
-    - common
-
+#   - common
+   - graphdb
+#    - nodejs
+#   - { role: geerlingguy.mysql }
+#    - origintrail

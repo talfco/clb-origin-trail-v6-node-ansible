@@ -1,0 +1,9 @@
+- name: Checkout Origin Trail
+  ansible.builtin.git:
+    repo: 'https://github.com/OriginTrail/ot-node'
+    dest: ./ansible/ot
+    version: v6/release/testnet
+- name: Update origin-trail packages based on package.json to their latest version.
+  npm:
+    path: ./ansible/ot
+    state: latest

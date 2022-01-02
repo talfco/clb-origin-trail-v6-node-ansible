@@ -1,1 +1,1 @@
-ansible-playbook site.yml -i hosts.yml
+ansible-playbook  site.yml -i inventory
