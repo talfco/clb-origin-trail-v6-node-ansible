@@ -1,16 +1,16 @@
 {
   "blockchain":[
     {
-      "blockchainTitle": "Polygon",
-      "networkId": "polygon::testnet",
-      "rpcEndpoints": ["https://rpc-mumbai.maticvigil.com/"],
+      "blockchainTitle": "_BCTITLE_",
+      "networkId": "_BCNETWORKID_",
+      "rpcEndpoints": ["_BCRPCEP_"],
       "publicKey": "_PUBKEY_",
       "privateKey": "_PRIVKEY_"
     }
   ],
   "graphDatabase": {
     "username": "admin",
-    "password": ""
+    "password": "_GRAPHDBPWD_"
   },
   "logLevel": "trace",
   "rpcPort": 8900,

@@ -1,2 +1,4 @@
 .idea/
+vars_secret/main.yml
+roles/graphdb/download/*.zip
 

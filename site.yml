@@ -9,11 +9,14 @@
   become: yes
   hosts: ot_v6_mumbai
   remote_user: root
+  vars:
+    nodejs_install_npm_user: root
   vars_files:
     - vars/main.yml
+    - vars_secret/main.yml
   roles:
 #   - common
 #   - graphdb
-#    - nodejs
 #   - { role: geerlingguy.mysql }
+#    - { role: geerlingguy.nodejs }
     - origintrail

@@ -1,6 +1,7 @@
-mysql_root_password: "theR00tP455w0rd"
-
 mysql_databases:
   - name: operationaldb
     encoding: utf8
-    #collation: latin1_general_ci
+ot_env: "testnet"
+ot_blockchain_title: "Polygon"
+ot_network_id: "polygon::testnet"
+ot_rpcEndpoints: "https://rpc-mumbai.maticvigil.com/"

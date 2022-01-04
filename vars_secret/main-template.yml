@@ -1,0 +1,4 @@
+mysql_root_password: ""
+wallet_public_key: ""
+wallet_private_key: ""
+graph_db_pwd: ""

@@ -39,3 +39,91 @@
     dest: /home/otnode/node/.origintrail_noderc
     owner: otnode
     group: otnode
+- name: Copy the sequelizeConfig.js file over
+  ansible.builtin.copy:
+    src: sequelizeConfig.js
+    dest: /home/otnode/node/config/sequelizeConfig.js
+    owner: otnode
+    group: otnode
+- name: "Replace Public Key"
+  become: true
+  replace:
+    path: /home/otnode/node/.origintrail_noderc
+    regexp: '(_PUBKEY_)'
+    replace: >-
+      {{ wallet_public_key }}
+    backup: no
+- name: "Replace Private Key"
+  become: true
+  replace:
+    path: /home/otnode/node/.origintrail_noderc
+    regexp: '(_PRIVKEY_)'
+    replace: >-
+      {{ wallet_private_key }}
+    backup: no
+- name: "Replace GraphDB Passwory"
+  become: true
+  replace:
+    path: /home/otnode/node/.origintrail_noderc
+    regexp: '(_GRAPHDBPWD_)'
+    replace: >-
+      {{ graph_db_pwd }}
+    backup: no
+- name: "Replace Blockchain Title"
+  become: true
+  replace:
+    path: /home/otnode/node/.origintrail_noderc
+    regexp: '(_BCTITLE_)'
+    replace: >-
+      {{ ot_blockchain_title }}
+    backup: no
+- name: "Replace Blockchain Network Id"
+  become: true
+  replace:
+    path: /home/otnode/node/.origintrail_noderc
+    regexp: '(_BCNETWORKID_)'
+    replace: >-
+      {{ ot_network_id }}
+    backup: no
+- name: "Replace Blockchain RPC Endpoint"
+  become: true
+  replace:
+    path: /home/otnode/node/.origintrail_noderc
+    regexp: '(_BCRPCEP_)'
+    replace: >-
+      {{ ot_rpcEndpoints }}
+    backup: no
+- name: "Replace Env Name"
+  become: true
+  replace:
+    path: /home/otnode/node/.env
+    regexp: '(_NODEENV_)'
+    replace: >-
+      {{ ot_env }}
+    backup: no
+- name: "Replace Password in sequelize file"
+  become: true
+  replace:
+    path: /home/otnode/node/config/sequelizeConfig.js
+    regexp: '(_MYSQLPWD_)'
+    replace: >-
+      {{ mysql_root_password }}
+    backup: no
+- name: "Create the mysql db structure"
+  command: npx sequelize --config=/home/otnode/node/config/sequelizeConfig.js db:migrate
+  args:
+    chdir: /home/otnode/node
+- name: Create a log directory for otnode in /var/log
+  ansible.builtin.file:
+    path: /var/log/otnode
+    owner: otnode
+    group: otnode
+    state: directory
+    mode: '0755'
+- name: Copy otnode.conf to supervisor directory
+  copy:
+    src: otnode.conf
+    dest: /etc/supervisor/conf.d
+    mode: a+rx
+- name: Restart supervisor.service
+  command: systemctl restart supervisor.service
