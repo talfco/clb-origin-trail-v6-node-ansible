@@ -1,9 +1,41 @@
+- name: Ensure group "otnode" exists
+  ansible.builtin.group:
+    name: otnode
+    state: present
+- name: Add the user 'otnode'
+  user:
+    name: otnode
+    group: otnode
+    groups: otnode, sudo, root
+    password: "{{ 'test' | password_hash('sha512') }}"
+    shell: /bin/bash
+    comment: otnode User
 - name: Checkout Origin Trail
   ansible.builtin.git:
-    repo: 'https://github.com/OriginTrail/ot-node'
-    dest: ./ansible/ot
+    repo: 'https://github.com/origintrail/ot-node'
+    force: yes
+    dest: /home/otnode/node
     version: v6/release/testnet
 - name: Update origin-trail packages based on package.json to their latest version.
   npm:
-    path: ./ansible/ot
+    path: /home/otnode/node
     state: latest
+- name: Recursively change ownership of the directory
+  ansible.builtin.file:
+    path: /home/otnode/node
+    state: directory
+    recurse: yes
+    owner: otnode
+    group: otnode
+- name: Copy the .env file over
+  ansible.builtin.copy:
+    src: .env
+    dest: /home/otnode/node/.env
+    owner: otnode
+    group: otnode
+- name: Copy the .origintrail_noderc file over
+  ansible.builtin.copy:
+    src: .origintrail_noderc
+    dest: /home/otnode/node/.origintrail_noderc
+    owner: otnode
+    group: otnode

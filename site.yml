@@ -13,7 +13,7 @@
     - vars/main.yml
   roles:
 #   - common
-   - graphdb
+#   - graphdb
 #    - nodejs
 #   - { role: geerlingguy.mysql }
-#    - origintrail
+    - origintrail

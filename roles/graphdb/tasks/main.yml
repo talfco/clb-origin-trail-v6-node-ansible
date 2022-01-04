@@ -13,7 +13,7 @@
     - { state: "latest", name: "supervisor" }
 - name: Copy the graph rpm db package over
   copy:
-    src: graphdb-free-9.10.1-dist.zip
+    src: ../download/graphdb-free-9.10.1-dist.zip
     dest: ./ansible
 - name: Ensure group "graphdb" exists
   ansible.builtin.group:
