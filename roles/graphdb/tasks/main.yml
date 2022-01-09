@@ -13,7 +13,7 @@
     - { state: "latest", name: "supervisor" }
 - name: Copy the graph rpm db package over
   copy:
-    src: ../download/graphdb-free-9.10.1-dist.zip
+    src: ../download/{{ graphdb_version }}-dist.zip
     dest: ./ansible
 - name: Ensure group "graphdb" exists
   ansible.builtin.group:
@@ -29,7 +29,7 @@
     comment: GraphDB User
 - name: Unarchive a file that is already on the remote machine
   ansible.builtin.unarchive:
-    src: ./ansible/graphdb-free-9.10.1-dist.zip
+    src: ./ansible/{{ graphdb_version }}-dist.zip
     owner: graphdb
     group: graphdb
     dest: /home/graphdb
@@ -43,7 +43,7 @@
     mode: '0755'
 - name: Create a symbolic link to graphdb-home
   ansible.builtin.file:
-    src: /home/graphdb/graphdb-free-9.10.1/
+    src: /home/graphdb/{{ graphdb_version }}/
     dest: /home/graphdb/graphdb-home
     owner: graphdb
     group: graphdb

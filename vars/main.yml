@@ -1,3 +1,4 @@
+graphdb_version: graphdb-free-9.10.1
 mysql_databases:
   - name: operationaldb
     encoding: utf8
