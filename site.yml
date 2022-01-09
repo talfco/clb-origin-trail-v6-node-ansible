@@ -3,6 +3,7 @@
 # Works on Ubuntu System with Architecture x86_64
 # By: felix@cloudburo.net
 # References:
+# https://docs.origintrail.io/dkg-v6-upcoming-version/setup-instructions-dockerless
 # https://severalnines.com/database-blog/introduction-mysql-deployment-using-ansible-role
 
 - name: Installation of Origin Trail V6 Node
@@ -15,8 +16,8 @@
     - vars/main.yml
     - vars_secret/main.yml
   roles:
-#   - common
-#   - graphdb
-#   - { role: geerlingguy.mysql }
-#    - { role: geerlingguy.nodejs }
+    - common
+    - graphdb
+    - { role: geerlingguy.mysql }
+    - { role: geerlingguy.nodejs }
     - origintrail

@@ -127,3 +127,7 @@
     mode: a+rx
 - name: Restart supervisor.service
   command: systemctl restart supervisor.service
+- name: Restart graphdb
+  command: supervisorctl restart graphdb
+- name: Restart otnode
+  command: supervisorctl restart otnode
