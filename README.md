@@ -2,7 +2,7 @@
 
 ##  Ansible Playbook "OriginTrail Decentralize Knowledge Graph V6 Node"
 
-[pic1](docs/origintrail-launch.jpeg)
+![pic1](docs/origintrail-launch.jpeg)
 
 The Ansible Playbook automates the installation of an OriginTrail Decentralized 
 Knowledge Node V6 during the testing phases. It may serve as a base for the setup of 
