@@ -24,7 +24,13 @@ status and oustanding tasks. Feel free to log enhancements requests or new bugs.
 
 ### User Manual
 
-All details can be found in the following Medium article [link to be provided]()
+All details can be found in the following Medium article [Medium Link](https://medium.cloudburo.net/hello-origin-trail-1-cost-effective-cloud-deployment-of-a-dkg-v6-node-d81f26362906?source=friends_link&sk=ef259f78bdf9ba69cbb47f26c945b64a)
 
-### Release Notes
+### Branch Release Notes
 
+#### version-1.0
+
+* [https://github.com/talfco/clb-origin-trail-v6-node-ansible/tree/version-1.0]([https://github.com/talfco/clb-origin-trail-v6-node-ansible/tree/version-1.0[https://github.com/talfco/clb-origin-trail-v6-node-ansible/tree/version-1.0)
+* Outstanding points, according to [manual Installation instructions](https://docs.origintrail.io/dkg-v6-upcoming-version/setup-instructions-dockerless)
+  * SSL configuration
+  * MySQL logging configuration
