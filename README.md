@@ -26,5 +26,11 @@ status and oustanding tasks. Feel free to log enhancements requests or new bugs.
 
 All details can be found in the following Medium article [link to be provided]()
 
-### Release Notes
+### Branch Release Notes
 
+#### version-1.0
+
+* [https://github.com/talfco/clb-origin-trail-v6-node-ansible/tree/version-1.0]([https://github.com/talfco/clb-origin-trail-v6-node-ansible/tree/version-1.0[https://github.com/talfco/clb-origin-trail-v6-node-ansible/tree/version-1.0)
+* Outstanding points, according to [manual Installation instructions](https://docs.origintrail.io/dkg-v6-upcoming-version/setup-instructions-dockerless)
+  * SSL configuration
+  * MySQL logging configuration
