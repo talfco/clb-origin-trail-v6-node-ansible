@@ -24,7 +24,7 @@ status and oustanding tasks. Feel free to log enhancements requests or new bugs.
 
 ### User Manual
 
-All details can be found in the following Medium article [link to be provided]()
+All details can be found in the following Medium article [Medium Link](https://medium.cloudburo.net/hello-origin-trail-1-cost-effective-cloud-deployment-of-a-dkg-v6-node-d81f26362906?source=friends_link&sk=ef259f78bdf9ba69cbb47f26c945b64a)
 
 ### Branch Release Notes
 
