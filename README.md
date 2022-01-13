@@ -16,6 +16,8 @@ the Ubuntu version `20.04`.
 The automation is based on the dockerless installation manual
 
 * Refer to the [manual Installation instructions](https://docs.origintrail.io/dkg-v6-upcoming-version/setup-instructions-dockerless)
+* This Ansible Playbook introduces multiple enhancements to the current installation guide. 
+* In case you want a 1:1 installation to the released installation manual you should use this [Ansible Playbook](https://github.com/calr0x/OT-KwallaBetaInstalla). This may taken to be consideration when you require installation support by the OT telegram group.
 
 ### Current Status and Issues
 
